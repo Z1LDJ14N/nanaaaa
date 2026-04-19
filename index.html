@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Nanaa 💌</title>
+    <style>
+        /* Menggunakan font yang estetik dari Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Container untuk halaman 1 dan 2 */
+        #page1, #page2 {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #page2 {
+            display: none; /* Disembunyikan di awal */
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Animasi dan style untuk halaman 1 */
+        .envelope {
+            font-size: 120px;
+            cursor: pointer;
+            animation: float 2s infinite ease-in-out;
+            margin-bottom: 20px;
+            filter: drop-shadow(0px 10px 10px rgba(0,0,0,0.1));
+        }
+
+        .btn-pencet {
+            font-size: 22px;
+            font-weight: 700;
+            color: #d63031;
+            background: white;
+            padding: 12px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(214, 48, 49, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-pencet:hover {
+            transform: scale(1.05);
+            background: #fff0f0;
+        }
+
+        /* Style untuk halaman 2 */
+        .photos {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .photos img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 5px solid white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transform: rotate(-3deg);
+            transition: transform 0.3s;
+        }
+
+        .photos img:nth-child(2) {
+            transform: rotate(3deg);
+        }
+
+        .photos img:hover {
+            transform: scale(1.05) rotate(0deg);
+        }
+
+        .message {
+            font-size: 20px;
+            color: #c0392b;
+            font-weight: 600;
+            max-width: 500px;
+            line-height: 1.7;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Keyframes animasi */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="page1">
+        <div class="envelope" onclick="bukaSurat()">💌</div>
+        <div class="btn-pencet" onclick="bukaSurat()">Pencet</div>
+    </div>
+
+    <div id="page2">
+        <div class="photos">
+            <img src="https://autoresbot.com/tmp_files/2f5ab5c7-4455-464d-b510-1625727e52a1.jpg" alt="Foto Nana 1">
+            <img src="https://autoresbot.com/tmp_files/cb09af4b-c457-4e4f-8a9d-17edc254a533.jpg" alt="Foto Nana 2">
+        </div>
+        <div class="message">
+            NANAA MAU NGGA JADI PACARKU, AKU GATAU KOK BISA TERPIKAT KALI AKU SAMA HATI KAMU NANAA, I LOVE YOU ❤️
+        </div>
+        
+        <audio id="musikBg" src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" loop></audio>
+    </div>
+
+    <script>
+        function bukaSurat() {
+            // Sembunyikan halaman 1, tampilkan halaman 2
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'flex';
+            
+            // Putar musik otomatis saat dipencet
+            // Syarat browser modern: audio baru bisa autoplay kalau user sudah melakukan interaksi (klik)
+            let lagu = document.getElementById('musikBg');
+            lagu.play().catch(function(error) {
+                console.log("Browser memblokir autoplay audio:", error);
+            });
+        }
+    </script>
+</body>
+</html>
